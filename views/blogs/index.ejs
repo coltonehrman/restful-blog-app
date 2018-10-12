@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+    
+    <div class="ui main container">
+        <div class="ui vertical stripe segment">
+            <div class="ui text container">
+                
+                <% blogs.forEach(blog => { %>
+                    <h4 class="ui horizontal header divider">
+                        <%= blog.createdAtFormatted %>
+                    </h4>
+                    
+                    <h3 class="ui header"><%= blog.title %></h3>
+                    <p>
+                        <%= blog.body.slice(0, 100) %>
+                        <% if (blog.body.length > 100) { %>
+                            ...
+                        <% }%>
+                    </p>
+                    <a href="/blogs/<%= blog._id%>" class="ui small blue button">Read More</a>
+                <% }); %>
+        
+            </div>
+        </div>
+    </div>
+
+<%- include('../partials/footer') %>
