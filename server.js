@@ -49,6 +49,7 @@ app.get('/blogs/:blogId/edit', async (req, res) => {
     
     try {
         const blog = await Blog.findById(req.params.blogId);
+        if (!blog) throw new Error();
         res.render('blogs/edit', { blog });
     } catch(err) {
         console.error(err);
