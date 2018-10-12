@@ -87,7 +87,7 @@ app.delete('/blogs/:blogId', async (req, res) => {
 // CREATE BLOG
 app.post('/blogs', async (req, res) => {
     await Blog.create(req.body.blog);
-    req.redirect('/blogs');
+    res.redirect('/blogs');
 });
 
 app.listen(process.env.PORT, process.env.IP, () => {
