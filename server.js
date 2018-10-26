@@ -1,3 +1,4 @@
+const expressSantizer = require('express-sanitizer');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -14,6 +15,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/restful_blog_ap
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressSantizer());
 app.use(methodOverride('_method'));
 
 app.get('/', (req, res) => {
@@ -88,6 +90,7 @@ app.delete('/blogs/:blogId', async (req, res) => {
 
 // CREATE BLOG
 app.post('/blogs', async (req, res) => {
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     await Blog.create(req.body.blog);
     res.redirect('/blogs');
 });

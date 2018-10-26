@@ -11,7 +11,7 @@
                     
                     <h3 class="ui header"><%= blog.title %></h3>
                     <p>
-                        <%= blog.body.slice(0, 100) %>
+                        <%- blog.body.slice(0, 100) %>
                         <% if (blog.body.length > 100) { %>
                             ...
                         <% }%>

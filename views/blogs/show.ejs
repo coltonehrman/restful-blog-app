@@ -15,7 +15,7 @@
         <% if (blog.image) { %>
             <img src="<%= blog.image %>" class="ui centered image" />
         <% } %>
-        <p><%= blog.body %></p>
+        <p><%- blog.body %></p>
     </div>
 
 <%- include('../partials/footer') %>
